@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}{{ post.title }} | My Blog{% endblock %}
+{% block content %}
+  <h1>{{ post.title }}</h1>
+  <p><small class="text-muted">Published on {{ post.created_at|date:"F d, Y" }}</small></p>
+  {% if post.category %}
+    <p><span class="badge bg-secondary">{{ post.category.name }}</span></p>
+  {% endif %}
+  <hr>
+  <p>{{ post.content|linebreaks }}</p>
+  <a href="{% url 'blog_list' %}" class="btn btn-secondary">Back to Blog</a>
+{% endblock %}

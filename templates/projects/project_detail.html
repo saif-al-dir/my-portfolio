@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}{{ project.title }} | DevPortfolio{% endblock %}
+{% block content %}
+  <h1>{{ project.title }}</h1>
+  <p><strong>Technology:</strong> {{ project.technology }}</p>
+  <p>{{ project.description|linebreaks }}</p>
+  {% if project.link %}
+    <a href="{{ project.link }}" target="_blank" class="btn btn-primary">View Live Project</a>
+  {% endif %}
+  <br><br>
+  <a href="{% url 'project_list' %}" class="btn btn-secondary">Back to Projects</a>
+{% endblock %}
