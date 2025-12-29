@@ -25,9 +25,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-vl+=8nb%+^q3z@!+_fs-&&mdss$l)ja0+kjzb2^ji+y17ojku5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+# DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'http://django.saif1.usermd.net/']
+# ALLOWED_HOSTS = ['localhost', 'http://django.saif1.usermd.net/']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -43,6 +45,7 @@ INSTALLED_APPS = [
     'pages.apps.PagesConfig',
     'projects.apps.ProjectsConfig',
     'blog.apps.BlogConfig',
+    'accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [
@@ -116,6 +119,15 @@ USE_I18N = True
 
 USE_TZ = True
 
+# myportfolio/settings.py
+
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
+
+# For the contact form (you can use a dummy for now)
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+AUTH_USER_MODEL = 'accounts.CustomUser'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
@@ -125,16 +137,10 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 
+
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # For production static files
 
 # Media files (uploads like project images)
 MEDIA_URL = '/media/'
 # Add this line. It tells Django where to store uploaded files.
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
-
-# myportfolio/settings.py
-
-LOGIN_REDIRECT_URL = 'home'
-
-# For the contact form (you can use a dummy for now)
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
